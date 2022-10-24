@@ -1,15 +1,15 @@
 const hre = require("hardhat");
-// to run after deploying cntract locally : npx hardhat run scripts/run.js --network localhost
+// to interact with contract after deploying cntract to goerlli network : npx hardhat run scripts/run.js --network goerli
 const main = async () => {
   fromWei = ethers.utils.formatEther;
   toWei = ethers.utils.parseEther;
 
-  const address = "0x5FbDB2315678afecb367f032d93F642f64180aa3"; // address of contract deployed in localhost
+  const address = "0x58a1629ba23dCae7AA9d3C33d7aF8359E2488485"; // address of contract deployed in goerli
   const token = await ethers.getContractAt("Token", address);
 
   const accounts = await hre.ethers.getSigners();
   const owner = accounts[0].address;
-  const toAddress = accounts[1].address;
+  const toAddress = "0x2D082C41Fe1fBD1b8A31C1fc41c27c1028445fA6";
 
   const name = await token.name();
   console.log(`name of erc20 token is ${name}`);
